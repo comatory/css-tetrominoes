@@ -1,5 +1,7 @@
 # CSS Tetrominoes
 
+[Live demo](https://comatory.github.io/css-tetrominoes/)
+
 ![Screenshot of tetrominoes](doc/screenshot.png)
 
 You can use provided stylesheet to construct tetris pieces by using only CSS classes.
