@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>CSS tetrominos</h1>
+  <p>
+    The design is taken from original Gameboy release of Tetris in 1989.
+    This <a href="https://www.spriters-resource.com/game_boy_gbc/tetris/sheet/26141/">spritesheet</a> was used as an inspiration.
+  </p>
+  <p>
+    Shapes are <code>("I"|"J"|"L"|"O"|"S"|"T"|"Z")</code> and are displayed with initial spawn rotation at 0 degrees - defined by <a href="https://tetris.fandom.com/wiki/SRS">SRS</a> system.
+  </p>
+  
+  <div id="controls-group">
+    <fieldset class='controls'>
+      <legend>Size</legend>
+      <input id="size-control" type="range" min="0" max="100" value="40" />
+      <pre id="size-output"></pre>
+    </fieldset>
+    <fieldset class='controls'>
+      <legend>Rotation</legend>
+      <ul id="rotation-control">
+        <li>
+          <label for="rotation-0">
+            <input id="rotation-0" name="rotation" type="radio" value="0" checked="" />
+            0°
+          </label>
+        </li>
+        <li>
+          <label for="rotation-90">
+            <input id="rotation-90" name="rotation" type="radio" value="90" />
+            90°
+          </label>
+        </li>
+        <li>
+          <label for="rotation-180">
+            <input id="rotation-180" name="rotation" type="radio" value="180" />
+            180°
+          </label>
+        </li>
+        <li>
+          <label for="rotation-270">
+            <input id="rotation-270" name="rotation" type="radio" value="270" />
+            270°
+          </label>
+        </li>
+      </ul>
+    </fieldset>
+  </div>
+  
+  <div id="gallery">
+    <table id="i-shape" class="gallery-shape" data-degree="0">
+      <caption class='gallery-label'>I shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="i i-head sprite"></div>
+          </td>
+          <td>
+            <div class="i i-middle sprite"></div>
+          </td>
+          <td>
+            <div class="i i-middle sprite"></div>
+          </td>
+          <td>
+            <div class="i i-tail sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="i-shape" class="gallery-shape hidden" data-degree="90">
+      <caption class='gallery-label'>I shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="i i-head-vertical sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="i i-middle-vertical sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="i i-middle-vertical sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="i i-tail-vertical sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="i-shape" class="gallery-shape" data-degree="180">
+      <caption class='gallery-label'>I shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="i i-head sprite"></div>
+          </td>
+          <td>
+            <div class="i i-middle sprite"></div>
+          </td>
+          <td>
+            <div class="i i-middle sprite"></div>
+          </td>
+          <td>
+            <div class="i i-tail sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="i-shape" class="gallery-shape hidden" data-degree="270">
+      <caption class='gallery-label'>I shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="i i-head-vertical sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="i i-middle-vertical sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="i i-middle-vertical sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="i i-tail-vertical sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table id="j-shape" class="gallery-shape" data-degree="0">
+      <caption class='gallery-label'>J shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="j-shape" class="gallery-shape" data-degree="90">
+      <caption class='gallery-label'>J shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="j-shape" class="gallery-shape" data-degree="180">
+      <caption class='gallery-label'>J shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="j-shape" class="gallery-shape" data-degree="270">
+      <caption class='gallery-label'>J shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+          <td>
+            <div class="j sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table id="l-shape" class="gallery-shape" data-degree="0">
+      <caption class='gallery-label'>L shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="l-shape" class="gallery-shape" data-degree="90">
+      <caption class='gallery-label'>L shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="l-shape" class="gallery-shape" data-degree="180">
+      <caption class='gallery-label'>L shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="l-shape" class="gallery-shape" data-degree="270">
+      <caption class='gallery-label'>L shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+        </tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="l sprite"></div>
+          </td>
+        <tr>
+        </tr>
+      </tbody>
+    </table>
+
+    <table id="o-shape" class="gallery-shape" data-degree="0">
+      <caption class='gallery-label'>O shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="o-shape" class="gallery-shape" data-degree="90">
+      <caption class='gallery-label'>O shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="o-shape" class="gallery-shape" data-degree="180">
+      <caption class='gallery-label'>O shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="o-shape" class="gallery-shape" data-degree="270">
+      <caption class='gallery-label'>O shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+          <td>
+            <div class="o sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table id="s-shape" class="gallery-shape" data-degree="0">
+      <caption class='gallery-label'>S shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="s-shape" class="gallery-shape" data-degree="90">
+      <caption class='gallery-label'>S shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="s-shape" class="gallery-shape" data-degree="180">
+      <caption class='gallery-label'>S shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="s-shape" class="gallery-shape" data-degree="270">
+      <caption class='gallery-label'>S shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="s sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <table id="t-shape" class="gallery-shape" data-degree="0">
+      <caption class='gallery-label'>T shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="t-shape" class="gallery-shape" data-degree="90">
+      <caption class='gallery-label'>T shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="t-shape" class="gallery-shape" data-degree="180">
+      <caption class='gallery-label'>T shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="t-shape" class="gallery-shape" data-degree="270">
+      <caption class='gallery-label'>T shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="t sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <table id="z-shape" class="gallery-shape" data-degree="0">
+      <caption class='gallery-label'>Z shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="z-shape" class="gallery-shape" data-degree="90">
+      <caption class='gallery-label'>Z shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="z-shape" class="gallery-shape" data-degree="180">
+      <caption class='gallery-label'>Z shape</caption>
+      <tbody>
+        <tr>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table id="z-shape" class="gallery-shape" data-degree="270">
+      <caption class='gallery-label'>Z shape</caption>
+      <tbody>
+        <tr>
+          <td>
+          </td>
+          <td>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+          </td>
+          <td>
+            <div class="z sprite"></div>
+          </td>
+          <td>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <section id="sprites">
+    <hr />
+    <h3>Sprites</h3>
+    <ul id="sprites-list">
+      <li>
+        <label class="sprite-label">Wall</label>
+        <div class="wall sprite"></div>
+        <table class="sprite-showcase">
+          <tbody>
+            <tr>
+              <td>
+                <div class="wall sprite"></div>
+              </td>
+              <td>
+                <div class="wall sprite"></div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div class="wall sprite"></div>
+              </td>
+              <td>
+                <div class="wall sprite"></div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </section>
+  <script src="script.js"></script>
+</body>
+
+</html>
